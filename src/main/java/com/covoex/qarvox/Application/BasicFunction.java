@@ -8,6 +8,7 @@ import java.util.Collections;
 
 import static com.covoex.qarvox.Application.Input.s;
 import static com.covoex.qarvox.Application.Input.worldInput;
+import static com.covoex.qarvox.Application.Tutorial.tutorial;
 
 /**
  * @author Myeongjun Kim
@@ -17,11 +18,10 @@ public class BasicFunction {
     public static Person mainCharacter = new Person();
 
     public static void programStart() {
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("Qarvox is a text-based java RPG Game created by Myeongjun Kim");
-        System.out.println("----------------------------------------------------------------------------------");
-        System.out.println("");
+        System.out.println("--------------------------------------------------------------");
+        System.out.println("Qarvox is a text-based java RPG Game created by Myeongjun Kim.");
+        System.out.println("--------------------------------------------------------------");
+        System.out.println();
         System.out.print("Press [any key] and [Enter] to play the game" + ": ");
 
         if (String.valueOf(s.nextLine()).matches(".")) {
@@ -31,9 +31,11 @@ public class BasicFunction {
             System.out.println();
             System.out.print(
                     "Do you want to play the tutorial? Press [y] or [n] and [Enter]" + ": ");
-            if (s.nextLine().equals("y")) {
-                Tutorial.tutorial();
-            } else if (s.nextLine().equals("n")) {
+
+            if (yesOrNo()) {
+                tutorial();
+            } else {
+                System.out.println();
                 System.out.print("What world do you want to go? World: ");
                 worldInput(s.nextInt());
             }
@@ -58,6 +60,19 @@ public class BasicFunction {
             string += baseString.charAt(value);
         }
         return string;
+    }
+
+    public static boolean yesOrNo() {
+        String string = s.nextLine();
+        if (string.contains("y")) {
+            return true;
+        } else if (string.contains("n")) {
+            return false;
+        } else {
+            System.out.print("Press [y] or [n] and [Enter]: ");
+            yesOrNo();
+        }
+        return false;
     }
 
     public static void printHealthGauge(GameCharacter c) {
