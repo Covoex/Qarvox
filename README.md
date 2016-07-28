@@ -13,7 +13,7 @@ git clone https://github.com/Covoex/Qarvox
 ```
 
 ## History
-2016/7/24 - Qarvox launch
+2016/7/28 - Qarvox launch
 
 ## Contributor
 * <img src="https://avatars0.githubusercontent.com/u/20628036?v=3&s=140" height="40" align="center"> **Myeongjun Kim** ([Covoex](https://github.com/Covoex)) 
