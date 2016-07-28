@@ -19,4 +19,4 @@ git clone https://github.com/Covoex/Qarvox
 * <img src="https://avatars0.githubusercontent.com/u/20628036?v=3&s=140" height="40" align="center"> **Myeongjun Kim** (@Covoex) 
 
 ## License
-See the [LICENSE](https://github.com/Covoex/Qarvox/blob/master/LICENSE.md) file.
+See the [LICENSE](https://github.com/Covoex/Qarvox/blob/master/LICENSE) file.
