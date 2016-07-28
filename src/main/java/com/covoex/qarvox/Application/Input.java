@@ -14,6 +14,7 @@ import static com.covoex.qarvox.Logic.CharacterInteraction.attack;
  * The Input class handles user input.
  *
  * @author Myeongjun Kim
+ *
  */
 
 public class Input {
