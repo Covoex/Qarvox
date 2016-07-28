@@ -12,7 +12,7 @@ git clone https://github.com/Covoex/Qarvox
 ./gradlew run
 ```
 ## Contributing
-1. Create a branch for each function
+1. Create a branch for each function to add.
 2. Merge the branch to master after implementing the function + bug-fixing.
 
 ## License
