@@ -1,7 +1,7 @@
 # Qarvox
 [![Build Status](https://travis-ci.org/Covoex/Qarvox.svg?branch=master)](https://travis-ci.org/Covoex/Qarvox)
 
-Text based Java RPG game.
+A text based Java RPG game.
 
 ## Installation
 ```
