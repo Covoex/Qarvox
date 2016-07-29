@@ -1,8 +1,7 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.getRandomString;
-import static com.covoex.qarvox.Application.BasicFunction.randomInt;
-import static com.covoex.qarvox.Application.Input.monsterInput;
+import static com.covoex.qarvox.Application.Input.characterInput;
+import static com.covoex.qarvox.Logic.GameCharacter.getRandomCharacter;
 
 /**
  * @author Myeongjun Kim
@@ -15,16 +14,17 @@ public class World {
         this.worldNum = worldNum;
     }
 
-    public static Monster getRandomMonster(int worldNum) {
-        return new Monster(getRandomString(), worldNum + randomInt());
+    public int getWorldNum() {
+        return worldNum;
     }
 
     public void start() {
-        System.out.println("You are at World" + this.worldNum);
+        System.out.println("You are at World" + worldNum);
         for (int i = 0; i < 5; i++) {
-            Monster randomMonster = getRandomMonster(this.worldNum);
-            System.out.println("There is a " + randomMonster.getName());
-            monsterInput(randomMonster);
+            GameCharacter gameCharacter = getRandomCharacter(worldNum);
+            System.out.println("There is a " + "[" + gameCharacter.getType() + "] "
+                    + gameCharacter.getName());
+            characterInput(gameCharacter);
         }
     }
 }

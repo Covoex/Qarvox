@@ -1,31 +1,26 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.printHealthGauge;
-
 /**
  * @author Myeongjun Kim
  */
 
 public class CharacterInteraction {
 
-    public static void attack(Person person, Monster monster) {
-        while (monster.getHealth() > 0) {
-            if (person.getHealth() <= 0) {
-                System.out.println(person.getName() + " is dead");
-                return;
+    public static void attack(GameCharacter c1, GameCharacter c2) {
+        if (c1.getHealth() <= 0) {
+            System.out.println(c1.getName() + " is dead");
+            if (c2 instanceof Person) {
+                Person person = (Person) c2;
+                System.out.println("You earned " + person.getMoney());
             }
-            System.out.println("-----------------------------");
-            System.out.println("level: " + monster.getLevel());
-            System.out.println("name: " + monster.getName());
-            printHealthGauge(monster);
-            System.out.println("-----------------------------");
-            monster.setHealth(monster.getHealth() - person.getAttackPower());
+            return;
         }
-        System.out.println(monster.getName() + " is dead");
-    }
-
-    public static void attack(Person p1, Person p2) {
-
+        System.out.println();
+        System.out.println("level: " + c2.getLevel());
+        System.out.println("name: " + c2.getName());
+        System.out.println("Health: " + c2.getHealthGauge(c2));
+        System.out.println();
+        c2.setHealth(c2.getHealth() - c1.getAttackPower());
     }
 
     public static void run() {

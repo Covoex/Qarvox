@@ -1,6 +1,5 @@
 package com.covoex.qarvox.Application;
 
-import com.covoex.qarvox.Logic.GameCharacter;
 import com.covoex.qarvox.Logic.Person;
 
 import java.util.ArrayList;
@@ -45,21 +44,21 @@ public class BasicFunction {
     /**
      * @return randomstring
      */
-    public static String getRandomString() {
-        String baseString = "abcdjfghijklmnopqrstuvwxyz";
+    public static String getRandomName() {
+        String baseString = "abcdefghijklmnopqrstuvwxyz";
         String string = "";
 
         for (int i = 0; i < 5; i++) {
             int value = (int) (Math.random() * 100);
-            while (value > 26) {
+            while (value > 25) {
                 value = (int) (Math.random() * 100);
-                if (value <= 25) {
+                if (value < 26) {
                     break;
                 }
             }
             string += baseString.charAt(value);
         }
-        return string;
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     public static boolean yesOrNo() {
@@ -73,18 +72,6 @@ public class BasicFunction {
             yesOrNo();
         }
         return false;
-    }
-
-    public static void printHealthGauge(GameCharacter c) {
-        String returnString = "";
-        String addString = "";
-        for (int i = 0; i < (c.getInitialHealth() - c.getHealth()); i++) {
-            addString += " ";
-        }
-        for (int i = 0; i < c.getHealth(); i++) {
-            returnString += '\u0254';
-        }
-        System.out.println("[" + returnString + addString + "]");
     }
 
     /**

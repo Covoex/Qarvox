@@ -1,7 +1,6 @@
 package com.covoex.qarvox.Application;
 
 import com.covoex.qarvox.Logic.GameCharacter;
-import com.covoex.qarvox.Logic.Monster;
 import com.covoex.qarvox.Logic.World;
 
 import java.util.Scanner;
@@ -20,19 +19,24 @@ import static com.covoex.qarvox.Logic.CharacterInteraction.attack;
 public class Input {
     public static Scanner s = new Scanner(System.in);
 
-    public static void monsterInput(Monster monster) {
-        if (s.nextLine().equals("a")) {
-            attack(mainCharacter, monster);
-        } else if (s.nextLine().equals("r")) {
-            if (fiftyFifty()) {
-                System.out.println("You failed to run");
-                monsterInput(monster);
+    public static void characterInput(GameCharacter character) {
+        while (character.getHealth() > 0) {
+            System.out.print("What do you want to do?: ");
+            String string = s.nextLine();
+            if (string.equals("a")) {
+                attack(mainCharacter, character);
+            } else if (string.equals("r")) {
+                if (fiftyFifty()) {
+                    System.out.println("You failed to run");
+                    characterInput(character);
+                }
             }
         }
     }
 
     public static void worldInput(int input) {
         World world = new World(input);
+        System.out.println();
         world.start();
     }
 
