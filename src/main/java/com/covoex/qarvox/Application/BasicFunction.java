@@ -36,7 +36,7 @@ public class BasicFunction {
             } else {
                 System.out.println();
                 System.out.print("What world do you want to go? World: ");
-                worldInput(s.nextInt());
+                worldInput();
             }
         }
     }

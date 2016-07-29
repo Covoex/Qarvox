@@ -1,6 +1,7 @@
 package com.covoex.qarvox.Logic;
 
 import static com.covoex.qarvox.Application.BasicFunction.randomInt;
+import static com.covoex.qarvox.Application.Input.s;
 import static com.covoex.qarvox.Logic.Monster.getRandomMonster;
 import static com.covoex.qarvox.Logic.Person.getRandomPerson;
 
@@ -61,7 +62,12 @@ public class GameCharacter {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.matches("[A-Za-z]")) {
+            this.name = name;
+        } else {
+            System.out.print("Name can only contain the English Alphabet: ");
+            setName(s.nextLine());
+        }
     }
 
     public int getLevel() {
