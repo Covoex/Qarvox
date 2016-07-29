@@ -20,12 +20,16 @@ public class Input {
     public static Scanner s = new Scanner(System.in);
 
     public static void characterInput(GameCharacter character) {
-        if (s.nextLine().equals("a")) {
-            attack(mainCharacter, character);
-        } else if (s.nextLine().equals("r")) {
-            if (fiftyFifty()) {
-                System.out.println("You failed to run");
-                characterInput(character);
+        while (character.getHealth() > 0) {
+            System.out.print("What do you want to do?: ");
+            String string = s.nextLine();
+            if (string.equals("a")) {
+                attack(mainCharacter, character);
+            } else if (string.equals("r")) {
+                if (fiftyFifty()) {
+                    System.out.println("You failed to run");
+                    characterInput(character);
+                }
             }
         }
     }

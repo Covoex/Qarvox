@@ -1,6 +1,6 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.getRandomString;
+import static com.covoex.qarvox.Application.BasicFunction.getRandomName;
 
 /**
  * @author Myeongjun Kim
@@ -13,6 +13,6 @@ public class Monster extends GameCharacter {
     }
 
     public static Monster getRandomMonster(int world) {
-        return new Monster(getRandomString(), world);
+        return new Monster(getRandomName(), world);
     }
 }

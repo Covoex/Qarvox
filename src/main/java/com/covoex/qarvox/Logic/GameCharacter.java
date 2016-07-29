@@ -10,10 +10,10 @@ import static com.covoex.qarvox.Logic.Person.getRandomPerson;
 
 public class GameCharacter {
     private String name;
-    private double initialHealth;
-    private double health;
-    private double attackPower;
     private int level;
+    private double initialHealth = level * 10 + 100;
+    private double health = initialHealth;
+    private double attackPower = level * 10 + 10;
     private double exp;
 
     public GameCharacter() {
@@ -34,6 +34,18 @@ public class GameCharacter {
         if (randomInt() == -1) {
             return getRandomPerson(world);
         } else return getRandomMonster(world);
+    }
+
+    public String getHealthGauge(GameCharacter c) {
+        String returnString = "";
+        String addString = "";
+        for (int i = 0; i < (c.getInitialHealth() - c.getHealth()); i++) {
+            addString += " ";
+        }
+        for (int i = 0; i < c.getHealth(); i++) {
+            returnString += '-';
+        }
+        return "[" + returnString + addString + "]";
     }
 
     public String getType() {
@@ -61,12 +73,6 @@ public class GameCharacter {
     }
 
     public double getAttackPower() {
-        switch (level) {
-            case 1:
-                attackPower = 10;
-                break;
-            case 2:
-        }
         return attackPower;
     }
 
@@ -75,11 +81,6 @@ public class GameCharacter {
     }
 
     public double getHealth() {
-        switch (level) {
-            case 1:
-                health = 100;
-                break;
-        }
         return health;
     }
 

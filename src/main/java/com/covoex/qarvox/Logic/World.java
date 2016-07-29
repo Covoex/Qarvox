@@ -24,7 +24,6 @@ public class World {
             GameCharacter gameCharacter = getRandomCharacter(worldNum);
             System.out.println("There is a " + "[" + gameCharacter.getType() + "] "
                     + gameCharacter.getName());
-            System.out.println("What do you want to do?");
             characterInput(gameCharacter);
         }
     }
