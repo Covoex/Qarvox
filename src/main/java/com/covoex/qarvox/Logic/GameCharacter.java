@@ -37,6 +37,23 @@ public class GameCharacter {
         } else return getRandomMonster(world);
     }
 
+    public static String getRandomName() {
+        String baseString = "abcdefghijklmnopqrstuvwxyz";
+        String string = "";
+
+        for (int i = 0; i < 5; i++) {
+            int value = (int) (Math.random() * 100);
+            while (value > 25) {
+                value = (int) (Math.random() * 100);
+                if (value < 26) {
+                    break;
+                }
+            }
+            string += baseString.charAt(value);
+        }
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
+    }
+
     public String getHealthGauge(GameCharacter c) {
         String returnString = "";
         String addString = "";
@@ -62,7 +79,7 @@ public class GameCharacter {
     }
 
     public void setName(String name) {
-        if (name.matches("[A-Za-z]")) {
+        if (name.matches("[A-Za-z]++")) {
             this.name = name;
         } else if (name.equals("")) {
             System.out.print("Names have to be longer than that: ");

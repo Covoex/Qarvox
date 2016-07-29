@@ -1,6 +1,5 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.getRandomName;
 import static com.covoex.qarvox.Application.BasicFunction.randomInt;
 
 /**
