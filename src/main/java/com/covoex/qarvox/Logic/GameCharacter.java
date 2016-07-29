@@ -1,6 +1,7 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.randomInt;
+import static com.covoex.qarvox.Application.BasicFunction.getRandomInt;
+import static com.covoex.qarvox.Application.BasicFunction.mainCharacter;
 import static com.covoex.qarvox.Application.Input.s;
 import static com.covoex.qarvox.Logic.Monster.getRandomMonster;
 import static com.covoex.qarvox.Logic.Person.getRandomPerson;
@@ -32,7 +33,7 @@ public class GameCharacter {
     }
 
     public static GameCharacter getRandomCharacter(int world) {
-        if (randomInt() == -1) {
+        if (getRandomInt() == -1) {
             return getRandomPerson(world);
         } else return getRandomMonster(world);
     }
@@ -85,7 +86,7 @@ public class GameCharacter {
             System.out.print("Names have to be longer than that: ");
             setName(s.nextLine());
         } else {
-            System.out.print("Name can only contain the English Alphabet: ");
+            System.out.print("Names can only contain the English Alphabet: ");
             setName(s.nextLine());
         }
     }
@@ -111,11 +112,13 @@ public class GameCharacter {
     }
 
     public void setHealth(double health) {
-        if (health < 0) {
+        if (health <= 0) {
             System.out.println(getName() + " is dead.");
             if (this instanceof Person) {
                 Person person = (Person) this;
-                System.out.println("You earned " + person.getMoney());
+                mainCharacter.setMoney(mainCharacter.getMoney() + person.getMoney());
+                System.out.println("You earned " + "Q'" + person.getMoney() + "'.");
+                System.out.println("Your balance: " + mainCharacter.getMoney());
             }
         }
         this.health = health;

@@ -53,7 +53,7 @@ public class BasicFunction {
     /**
      * get random int between [-1 - 1]
      */
-    public static int randomInt() {
+    public static int getRandomInt() {
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(-1);
         arrayList.add(0);
