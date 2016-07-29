@@ -3,6 +3,7 @@ package com.covoex.qarvox.Application;
 import com.covoex.qarvox.Logic.GameCharacter;
 import com.covoex.qarvox.Logic.World;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static com.covoex.qarvox.Application.BasicFunction.fiftyFifty;
@@ -34,9 +35,16 @@ public class Input {
         }
     }
 
-    public static void worldInput(int input) {
-        World world = new World(input);
-        System.out.println();
+    public static void worldInput() {
+        Scanner s = new Scanner(System.in);
+        int worldNum = 0;
+        try {
+            worldNum = s.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.print("Please enter a number equal or greater than 0: ");
+            worldInput();
+        }
+        World world = new World(worldNum);
         world.start();
     }
 

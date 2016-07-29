@@ -1,7 +1,6 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.getRandomName;
-import static com.covoex.qarvox.Application.BasicFunction.randomInt;
+import static com.covoex.qarvox.Application.BasicFunction.getRandomInt;
 
 /**
  * @author Myeongjun Kim
@@ -20,7 +19,7 @@ public class Person extends GameCharacter {
     }
 
     public static Person getRandomPerson(int world) {
-        return new Person(getRandomName(), world + randomInt());
+        return new Person(getRandomName(), world + getRandomInt());
     }
 
     public double getMoney() {

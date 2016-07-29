@@ -1,6 +1,8 @@
 package com.covoex.qarvox.Logic;
 
-import static com.covoex.qarvox.Application.BasicFunction.randomInt;
+import static com.covoex.qarvox.Application.BasicFunction.getRandomInt;
+import static com.covoex.qarvox.Application.BasicFunction.mainCharacter;
+import static com.covoex.qarvox.Application.Input.s;
 import static com.covoex.qarvox.Logic.Monster.getRandomMonster;
 import static com.covoex.qarvox.Logic.Person.getRandomPerson;
 
@@ -31,9 +33,26 @@ public class GameCharacter {
     }
 
     public static GameCharacter getRandomCharacter(int world) {
-        if (randomInt() == -1) {
+        if (getRandomInt() == -1) {
             return getRandomPerson(world);
         } else return getRandomMonster(world);
+    }
+
+    public static String getRandomName() {
+        String baseString = "abcdefghijklmnopqrstuvwxyz";
+        String string = "";
+
+        for (int i = 0; i < 5; i++) {
+            int value = (int) (Math.random() * 100);
+            while (value > 25) {
+                value = (int) (Math.random() * 100);
+                if (value < 26) {
+                    break;
+                }
+            }
+            string += baseString.charAt(value);
+        }
+        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     public String getHealthGauge(GameCharacter c) {
@@ -61,7 +80,15 @@ public class GameCharacter {
     }
 
     public void setName(String name) {
-        this.name = name;
+        if (name.matches("[A-Za-z]++")) {
+            this.name = name;
+        } else if (name.equals("")) {
+            System.out.print("Names have to be longer than that: ");
+            setName(s.nextLine());
+        } else {
+            System.out.print("Names can only contain the English Alphabet: ");
+            setName(s.nextLine());
+        }
     }
 
     public int getLevel() {
@@ -85,6 +112,15 @@ public class GameCharacter {
     }
 
     public void setHealth(double health) {
+        if (health <= 0) {
+            System.out.println(getName() + " is dead.");
+            if (this instanceof Person) {
+                Person person = (Person) this;
+                mainCharacter.setMoney(mainCharacter.getMoney() + person.getMoney());
+                System.out.println("You earned " + "Q'" + person.getMoney() + "'.");
+                System.out.println("Your balance: " + mainCharacter.getMoney());
+            }
+        }
         this.health = health;
     }
 

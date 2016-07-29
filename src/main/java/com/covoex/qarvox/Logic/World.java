@@ -19,6 +19,7 @@ public class World {
     }
 
     public void start() {
+        System.out.println();
         System.out.println("You are at World" + worldNum);
         for (int i = 0; i < 5; i++) {
             GameCharacter gameCharacter = getRandomCharacter(worldNum);

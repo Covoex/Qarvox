@@ -21,44 +21,20 @@ public class BasicFunction {
         System.out.println("Qarvox is a text-based java RPG Game created by Myeongjun Kim.");
         System.out.println("--------------------------------------------------------------");
         System.out.println();
-        System.out.print("Press [any key] and [Enter] to play the game" + ": ");
+        System.out.print("Type in your character's name" + ": ");
+        mainCharacter.setName(s.nextLine());
+        System.out.println();
+        System.out.print(
+                "Do you want to play the tutorial? Press [y] or [n] and [Enter]" + ": ");
 
-        if (String.valueOf(s.nextLine()).matches(".")) {
+        if (yesOrNo()) {
+            tutorial();
+        } else {
             System.out.println();
-            System.out.print("Type in your character's name" + ": ");
-            mainCharacter.setName(s.nextLine());
-            System.out.println();
-            System.out.print(
-                    "Do you want to play the tutorial? Press [y] or [n] and [Enter]" + ": ");
-
-            if (yesOrNo()) {
-                tutorial();
-            } else {
-                System.out.println();
-                System.out.print("What world do you want to go? World: ");
-                worldInput(s.nextInt());
-            }
+            System.out.print("What world do you want to go? World: ");
+            worldInput();
         }
-    }
 
-    /**
-     * @return randomstring
-     */
-    public static String getRandomName() {
-        String baseString = "abcdefghijklmnopqrstuvwxyz";
-        String string = "";
-
-        for (int i = 0; i < 5; i++) {
-            int value = (int) (Math.random() * 100);
-            while (value > 25) {
-                value = (int) (Math.random() * 100);
-                if (value < 26) {
-                    break;
-                }
-            }
-            string += baseString.charAt(value);
-        }
-        return string.substring(0, 1).toUpperCase() + string.substring(1);
     }
 
     public static boolean yesOrNo() {
@@ -77,7 +53,7 @@ public class BasicFunction {
     /**
      * get random int between [-1 - 1]
      */
-    public static int randomInt() {
+    public static int getRandomInt() {
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(-1);
         arrayList.add(0);
