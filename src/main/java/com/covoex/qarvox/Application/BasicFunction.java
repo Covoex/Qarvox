@@ -46,14 +46,14 @@ public class BasicFunction {
      * @return randomstring
      */
     public static String getRandomString() {
-        String baseString = "abcdjfghijklmnopqrstuvwxyz";
+        String baseString = "abcdefghijklmnopqrstuvwxyz";
         String string = "";
 
         for (int i = 0; i < 5; i++) {
             int value = (int) (Math.random() * 100);
-            while (value > 26) {
+            while (value > 25) {
                 value = (int) (Math.random() * 100);
-                if (value <= 25) {
+                if (value < 26) {
                     break;
                 }
             }

@@ -1,11 +1,14 @@
 package com.covoex.qarvox.Logic;
 
+import static com.covoex.qarvox.Application.BasicFunction.randomInt;
+import static com.covoex.qarvox.Logic.Monster.getRandomMonster;
+import static com.covoex.qarvox.Logic.Person.getRandomPerson;
+
 /**
  * @author Myeongjun Kim
  */
 
 public class GameCharacter {
-    private double money;
     private String name;
     private double initialHealth;
     private double health;
@@ -27,12 +30,18 @@ public class GameCharacter {
         setLevel(level);
     }
 
-    public double getMoney() {
-        return money;
+    public static GameCharacter getRandomCharacter(int world) {
+        if (randomInt() == -1) {
+            return getRandomPerson(world);
+        } else return getRandomMonster(world);
     }
 
-    public void setMoney(double money) {
-        this.money = money;
+    public String getType() {
+        if (this instanceof Person) {
+            return "Person";
+        } else {
+            return "Monster";
+        }
     }
 
     public String getName() {
