@@ -64,6 +64,9 @@ public class GameCharacter {
     public void setName(String name) {
         if (name.matches("[A-Za-z]")) {
             this.name = name;
+        } else if (name.equals("")) {
+            System.out.print("Names have to be longer than that: ");
+            setName(s.nextLine());
         } else {
             System.out.print("Name can only contain the English Alphabet: ");
             setName(s.nextLine());
@@ -91,6 +94,13 @@ public class GameCharacter {
     }
 
     public void setHealth(double health) {
+        if (health < 0) {
+            System.out.println(getName() + " is dead.");
+            if (this instanceof Person) {
+                Person person = (Person) this;
+                System.out.println("You earned " + person.getMoney());
+            }
+        }
         this.health = health;
     }
 
