@@ -2,6 +2,9 @@ group 'com.covoex.qarvox'
 version '0.1.0'
 
 apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = "com.covoex.qarvox.Main"
 
 repositories {
     mavenCentral()
@@ -9,4 +12,8 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+run {
+    standardInput = System.in
 }
